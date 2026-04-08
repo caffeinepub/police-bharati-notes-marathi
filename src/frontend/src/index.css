@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+
+    /* Light mode: page / card backgrounds */
+    --background: 0.963 0.003 247;
+    --foreground: 0.12 0.005 265;
+    --card: 1 0 0;
+    --card-foreground: 0.12 0.005 265;
+    --popover: 1 0 0;
+    --popover-foreground: 0.12 0.005 265;
+
+    /* Amber/Orange primary */
+    --primary: 0.72 0.165 60;
+    --primary-foreground: 0.12 0.005 265;
+
+    --secondary: 0.94 0.005 265;
+    --secondary-foreground: 0.12 0.005 265;
+    --muted: 0.94 0.005 265;
+    --muted-foreground: 0.5 0.01 265;
+    --accent: 0.94 0.005 265;
+    --accent-foreground: 0.12 0.005 265;
+    --destructive: 0.577 0.245 27;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.9 0.005 265;
+    --input: 0.9 0.005 265;
+    --ring: 0.72 0.165 60;
+    --chart-1: 0.646 0.222 41;
+    --chart-2: 0.6 0.118 184;
+    --chart-3: 0.398 0.07 227;
+    --chart-4: 0.828 0.189 84;
+    --chart-5: 0.769 0.188 70;
+
+    /* Sidebar: dark charcoal */
+    --sidebar: 0.185 0.008 255;
+    --sidebar-foreground: 0.925 0.005 265;
+    --sidebar-primary: 0.72 0.165 60;
+    --sidebar-primary-foreground: 0.12 0.005 265;
+    --sidebar-accent: 0.24 0.01 255;
+    --sidebar-accent-foreground: 0.925 0.005 265;
+    --sidebar-border: 0.28 0.01 255;
+    --sidebar-ring: 0.72 0.165 60;
+
+    /* Custom tokens */
+    --amber: 0.72 0.165 60;
+    --amber-dark: 0.65 0.155 60;
+    --sidebar-bg-from: 0.178 0.01 258;
+    --sidebar-bg-to: 0.22 0.012 255;
+    --sidebar-hover: 0.24 0.012 258;
+    --sidebar-active: 0.26 0.014 258;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Noto Sans Devanagari", "General Sans", system-ui, sans-serif;
+  }
+
+  html {
+    font-feature-settings: "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Sidebar gradient */
+.sidebar-gradient {
+  background: linear-gradient(
+    180deg,
+    oklch(var(--sidebar-bg-from)) 0%,
+    oklch(var(--sidebar-bg-to)) 100%
+  );
+}
+
+/* Scrollbar for sidebar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: oklch(0.35 0.01 255);
+  border-radius: 2px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.45 0.01 255);
+}
+
+/* Orange accent left border for active topic */
+.active-topic-accent {
+  position: relative;
+}
+.active-topic-accent::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: oklch(var(--amber));
+}
+
+/* Notes content styles */
+.notes-content {
+  font-family: "Noto Sans Devanagari", system-ui, sans-serif;
+  line-height: 1.7;
+  font-size: 15px;
+  color: oklch(var(--foreground));
+}
+
+.notes-content h1,
+.notes-content h2,
+.notes-content h3 {
+  font-weight: 700;
+  margin-top: 1.25em;
+  margin-bottom: 0.5em;
+  color: oklch(var(--foreground));
+}
+
+.notes-content ul,
+.notes-content ol {
+  padding-left: 1.5em;
+  margin: 0.75em 0;
+}
+
+.notes-content li {
+  margin: 0.35em 0;
+}
+
+.notes-content p {
+  margin: 0.75em 0;
+}
+
+/* Print / capture styles for PDF */
+.pdf-capture-area {
+  font-family: "Noto Sans Devanagari", sans-serif;
+  background: white;
+  color: #111827;
+  padding: 32px;
+  max-width: 800px;
+}
